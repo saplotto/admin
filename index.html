@@ -14,7 +14,7 @@
   --navy:#1C3A5F;--navy2:#264573;--gold:#C8B289;--goldd:#a8916a;--gold-light:#e0d0b0;
   --cream:#F5F2EC;--white:#fff;--text:#1a2a3a;--mid:#4a6080;--border:#d8cdb8;
   --green:#1a7a3a;--green-bg:#e8f5ec;--red:#8b1a1a;--red-bg:#fff0f0;
-  --nav-h:62px;
+  --nav-h:60px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:var(--cream);font-family:"Sarabun",sans-serif;color:var(--text);-webkit-tap-highlight-color:transparent;overflow:hidden}
@@ -42,12 +42,12 @@ button:active{transform:scale(.95)}
 .ntab.on{color:var(--gold)}
 .ntab.on::before{content:"";position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--gold);border-radius:0 0 3px 3px}
 .ntab svg{width:22px;height:22px}
-.ntab-lbl{font-size:9px;font-weight:700;letter-spacing:.3px}
+.ntab-lbl{font-size:8.5px;font-weight:700;letter-spacing:.2px}
 
 /* Thai tab floating icon */
 .ntab-thai{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;background:transparent;color:#6a90b8;padding:0 2px 4px;border:none;position:relative;-webkit-tap-highlight-color:transparent}
-.ntab-thai .ntab-lbl{font-size:9px;font-weight:700;letter-spacing:.3px}
-.ntab-thai.on .ntab-lbl{color:var(--gold)}
+.ntab-thai .ntab-lbl{font-size:8.5px;font-weight:700;letter-spacing:.2px}
+.ntab-thai.on .ntab-lbl{color:var(--gold)}.ntab svg{width:20px;height:20px}
 .ntab-thai.on::before{content:"";position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--gold);border-radius:0 0 3px 3px}
 .thai-float{position:absolute;bottom:14px;width:52px;height:52px;object-fit:contain;opacity:.55;transition:opacity .15s;pointer-events:none}
 .ntab-thai.on .thai-float{opacity:1}
@@ -184,7 +184,7 @@ button:active{transform:scale(.95)}
 .ag-av{width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--gold);flex-shrink:0}
 .ag-name{font-size:15px;font-weight:900;color:var(--navy)}
 .ag-pct{font-size:12px;color:var(--mid)}
-.ag-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ag-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;width:100%}
 .ag-stat{background:#f5f2ec;border-radius:6px;padding:6px 10px;text-align:center}
 .ag-sl{font-size:9px;color:var(--mid)}
 .ag-sv{font-size:14px;font-weight:900;color:var(--navy)}
@@ -199,6 +199,57 @@ button:active{transform:scale(.95)}
 /* TOAST */
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a2a3a;color:#fff;padding:10px 22px;border-radius:20px;font-size:14px;font-weight:600;z-index:999;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap;max-width:90vw}
 .toast.show{opacity:1}
+
+/* AGENT DROPDOWN */
+.ag-select{background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-size:15px;font-weight:600;width:100%;color:var(--text);appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a6080' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.ag-select:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+/* AGENT CUSTOMER LIST */
+.ag-customer{background:#f5f2ec;border-radius:8px;padding:10px 12px;margin-bottom:6px}
+.ag-cust-name{font-size:13px;font-weight:700;color:var(--navy)}
+.ag-cust-row{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}
+.ag-period-group{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:6px}
+.ag-period-head{background:var(--navy2);color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:1px;display:flex;justify-content:space-between}
+.ag-period-body{padding:8px 12px;display:flex;flex-direction:column;gap:4px}
+.ag-detail-toggle{background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:11px;color:var(--mid);cursor:pointer;margin-top:4px;width:100%}
+.ag-cust-list{display:none;flex-direction:column;gap:4px;margin-top:6px}
+.ag-cust-list.open{display:flex}
+
+
+/* RESULT TAB */
+.result-period-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;overflow:hidden;box-shadow:0 1px 6px rgba(28,58,95,.07)}
+.rpc-head{background:var(--navy);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.rpc-period{font-size:14px;font-weight:900;color:var(--white)}
+.rpc-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px}
+.rpc-badge.checked{background:var(--green);color:#fff}
+.rpc-badge.unchecked{background:var(--gold);color:#1a0800}
+.rpc-body{padding:14px;display:flex;flex-direction:column;gap:10px}
+.prize-inputs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.prize-in{background:var(--cream);border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-size:20px;font-weight:900;font-family:monospace;letter-spacing:4px;text-align:center;width:100%}
+.prize-in:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.check-all-btn{background:linear-gradient(135deg,var(--navy),var(--navy2));border:none;border-radius:10px;padding:11px;color:#fff;font-size:14px;font-weight:700;width:100%}
+.result-summary{background:#f0ede6;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.rs-row{display:flex;justify-content:space-between;font-size:14px}
+.rs-total{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--border);margin-top:4px;padding-top:8px}
+.winner-list{display:flex;flex-direction:column;gap:6px}
+.winner-card{background:var(--green-bg);border:1px solid #a8d4b8;border-radius:8px;padding:10px 12px}
+.winner-name{font-size:14px;font-weight:900;color:var(--green)}
+.winner-agent{font-size:11px;color:var(--mid);margin-bottom:4px}
+.winner-row{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}
+.no-winner{text-align:center;padding:16px;color:var(--mid);font-size:13px}
+.agent-winner-card{background:#fff3cd;border:1px solid #f0c040;border-radius:8px;padding:10px 12px;margin-bottom:6px}
+.aw-name{font-size:14px;font-weight:900;color:#8a6000}
+.send-result-btn{background:linear-gradient(135deg,#1a6b3a,#27a85a);border:none;border-radius:10px;padding:11px;color:#fff;font-size:14px;font-weight:700;width:100%}
+.section-title{font-size:11px;font-weight:700;color:var(--navy2);letter-spacing:2px;text-transform:uppercase;padding:4px 0 6px;border-bottom:1px solid var(--border)}
+
+
+/* FETCH RESULT BTN */
+.fetch-btn{background:linear-gradient(135deg,#c8920a,#f5c842);border:none;border-radius:10px;padding:11px;color:#1a0800;font-size:14px;font-weight:700;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}
+.fetch-btn:disabled{opacity:.5}
+.fetch-result-box{background:#eef3f9;border:1px solid #b0c4d8;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.fr-title{font-size:11px;font-weight:700;color:var(--navy2);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.fr-row{display:flex;justify-content:space-between;font-size:13px}
+.fr-num{font-family:monospace;font-weight:900;color:var(--navy);font-size:16px;letter-spacing:3px}
+
 </style>
 </head>
 <body>
@@ -228,6 +279,22 @@ button:active{transform:scale(.95)}
         </div>
       </div>
       <div id="slipList"></div>
+    </div>
+  </div>
+
+  <div class="pg" id="pg-result">
+    <div class="pb">
+      <div class="card">
+        <div class="ctitle">ผลรางวัล — ตรวจโพยรายงวด</div>
+        <div class="filter-row">
+          <button class="f-btn on" id="rf-all" onclick="resultFilter('all')">ทั้งหมด</button>
+          <button class="f-btn" id="rf-thai" onclick="resultFilter('thai')">หวยไทย</button>
+          <button class="f-btn" id="rf-lao" onclick="resultFilter('lao')">หวยลาว</button>
+          <button class="f-btn" id="rf-done" onclick="resultFilter('done')">ตรวจแล้ว</button>
+          <button class="f-btn" id="rf-todo" onclick="resultFilter('todo')">ยังไม่ตรวจ</button>
+        </div>
+      </div>
+      <div id="resultList"></div>
     </div>
   </div>
 
@@ -269,6 +336,10 @@ button:active{transform:scale(.95)}
     <button class="ntab" data-tab="slip" onclick="switchTab('slip')">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
       <span class="ntab-lbl">โพยหวย</span>
+    </button>
+    <button class="ntab" data-tab="result" onclick="switchTab('result')">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+      <span class="ntab-lbl">ผลรางวัล</span>
     </button>
     <button class="ntab" data-tab="agent" onclick="switchTab('agent')">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
@@ -312,7 +383,7 @@ function fmt(n){return(+n).toLocaleString('th-TH',{minimumFractionDigits:0,maxim
 function perms(s){if(s.length<=1)return[s];const r=new Set();for(let i=0;i<s.length;i++){const rest=s.slice(0,i)+s.slice(i+1);perms(rest).forEach(p=>r.add(s[i]+p));}return[...r]}
 function toast(msg,ok=true){const t=document.getElementById('toast');t.textContent=msg;t.style.background=ok?'#1a3a1a':'#3a1a1a';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
 
-const TAB_LBL={thai:'หวยไทย',lao:'หวยลาว',slip:'โพยหวย',agent:'นายหน้า'};
+const TAB_LBL={thai:'หวยไทย',lao:'หวยลาว',slip:'โพยหวย',result:'ผลรางวัล',agent:'นายหน้า'};
 function switchTab(tab){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.ntab,.ntab-thai').forEach(b=>b.classList.remove('on'));
@@ -320,7 +391,9 @@ function switchTab(tab){
   document.querySelector(`[data-tab="${tab}"]`).classList.add('on');
   document.getElementById('hdrBadge').textContent=TAB_LBL[tab];
   if(tab==='slip'){renderSlips();populatePeriods();}
+  if(tab==='result')renderResults();
   if(tab==='agent')renderAgents();
+  if(tab==='thai'||tab==='lao')updAllAgentDropdowns();
 }
 
 function makeLotto(containerId,key){
@@ -348,8 +421,18 @@ function makeLotto(containerId,key){
   <div class="card">
     <div class="ctitle">ข้อมูลโพย</div>
     <div class="row2">
-      <div class="col"><label class="lbl">ชื่อลูกค้า</label><input class="inp" id="${key}-nm" placeholder="เช่น สมชาย"></div>
+      <div class="col"><label class="lbl">ชื่อลูกค้า</label><input class="inp" id="${key}-nm" placeholder="เช่น สมชาย" oninput="updAgentDropdown('${key}')"></div>
       <div class="col"><label class="lbl">งวดวันที่</label><input class="inp" id="${key}-pd" placeholder="1/3/2569"></div>
+    </div>
+    <div class="col">
+      <label class="lbl">นายหน้า</label>
+      <div style="display:flex;gap:6px">
+        <select class="ag-select" id="${key}-ag" style="flex:1">
+          <option value="">— ไม่มีนายหน้า —</option>
+        </select>
+        <input class="inp" id="${key}-ag-new" placeholder="เพิ่มใหม่" style="width:110px;font-size:13px">
+        <button class="btn-n" id="${key}-ag-add" style="padding:8px 10px;width:auto;font-size:12px" onclick="addAgentFromLotto('${key}')">+</button>
+      </div>
     </div>
     <div class="col"><label class="lbl">เครดิต (บาท)</label><input class="inp" id="${key}-cr" placeholder="0" inputmode="numeric" style="font-size:18px;font-weight:900"></div>
   </div>
@@ -534,7 +617,26 @@ function makeLotto(containerId,key){
     const name=document.getElementById(`${key}-nm`).value.trim()||'ไม่ระบุ';
     const period=document.getElementById(`${key}-pd`).value.trim()||'ไม่ระบุ';
     const btn=document.getElementById(`${key}-snbtn`);btn.disabled=true;btn.textContent='⏳ กำลังส่ง...';
-    const slip={id:Date.now(),lotto:key,name,period,entries:[...entries],timestamp:new Date().toISOString(),totalBet:entries.reduce((s,e)=>s+e.amount,0)};
+    const agentSel=document.getElementById(`${key}-ag`).value;
+    const agentNew=document.getElementById(`${key}-ag-new`).value.trim();
+    const agent=agentNew||agentSel||'';
+    // Auto-add new agent if typed
+    if(agentNew){
+      const agents=loadAgents();
+      if(!agents.find(a=>a.name===agentNew)){
+        agents.push({id:Date.now(),name:agentNew,pct:0});
+        saveAgents(agents);
+        updAllAgentDropdowns();
+        renderAgents();
+      }
+      document.getElementById(`${key}-ag-new`).value='';
+      // select the new agent
+      setTimeout(()=>{
+        const sel=document.getElementById(`${key}-ag`);
+        for(let i=0;i<sel.options.length;i++){if(sel.options[i].value===agentNew){sel.selectedIndex=i;break;}}
+      },100);
+    }
+    const slip={id:Date.now(),lotto:key,name,period,agent,entries:[...entries],timestamp:new Date().toISOString(),totalBet:entries.reduce((s,e)=>s+e.amount,0)};
     const slips=loadSlips();slips.unshift(slip);saveSlips(slips);
     try{
       await fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,period,lotto:key,entries})});
@@ -606,28 +708,31 @@ function makeLotto(containerId,key){
   updNL();updPrev();updVis();
 }
 
-// SLIP
+// ===== SLIP TAB =====
 let slipMode='all';
 function slipFilter(m){
-  slipMode=m;['all','thai','lao'].forEach(x=>document.getElementById('sf-'+x).classList.toggle('on',x===m));renderSlips();
+  slipMode=m;['all','thai','lao'].forEach(x=>{const el=document.getElementById('sf-'+x);if(el)el.classList.toggle('on',x===m);});renderSlips();
 }
 function populatePeriods(){
   const slips=loadSlips();const periods=[...new Set(slips.map(s=>s.period))];
-  const sel=document.getElementById('slipPeriod');const cur=sel.value;
-  sel.innerHTML='<option value="">ทุกงวด</option>';
+  const sel=document.getElementById('slipPeriod');if(!sel)return;
+  const cur=sel.value;sel.innerHTML='<option value="">ทุกงวด</option>';
   periods.forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;if(p===cur)o.selected=true;sel.appendChild(o);});
 }
 function renderSlips(){
   let slips=loadSlips();
-  const search=document.getElementById('slipSearch').value.toLowerCase();
-  const period=document.getElementById('slipPeriod').value;
+  const searchEl=document.getElementById('slipSearch');
+  const periodEl=document.getElementById('slipPeriod');
+  if(!searchEl)return;
+  const search=searchEl.value.toLowerCase();
+  const period=periodEl?periodEl.value:'';
   if(slipMode!=='all')slips=slips.filter(s=>s.lotto===slipMode);
   if(search)slips=slips.filter(s=>s.name.toLowerCase().includes(search));
   if(period)slips=slips.filter(s=>s.period===period);
-  const el=document.getElementById('slipList');el.innerHTML='';
+  const el=document.getElementById('slipList');if(!el)return;el.innerHTML='';
   if(!slips.length){el.innerHTML='<div class="empty"><div class="empty-ico">📋</div><div class="empty-txt">ยังไม่มีโพย</div></div>';return;}
   const byP={};slips.forEach(s=>{if(!byP[s.period])byP[s.period]=[];byP[s.period].push(s);});
-  Object.keys(byP).forEach(p=>{
+  Object.keys(byP).sort().reverse().forEach(p=>{
     const grp=byP[p],tb=grp.reduce((s,g)=>s+g.totalBet,0),te=grp.reduce((s,g)=>s+g.entries.length,0);
     const pg=document.createElement('div');pg.className='pg-group';
     const pt=document.createElement('div');pt.className='pg-title';pt.textContent=`งวด ${p}`;pg.appendChild(pt);
@@ -639,7 +744,7 @@ function renderSlips(){
       const dt=new Date(slip.timestamp).toLocaleString('th-TH',{dateStyle:'short',timeStyle:'short'});
       sc.innerHTML=`
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div><div class="slip-name">${slip.name}</div><div class="slip-meta">${dt}</div></div>
+          <div><div class="slip-name">${slip.name}</div><div class="slip-meta">${dt}${slip.agent?' · 👤'+slip.agent:''}</div></div>
           <span class="slip-badge ${slip.lotto}">${slip.lotto==='thai'?'หวยไทย':'หวยลาว'}</span>
         </div>
         <div class="slip-tots">
@@ -652,11 +757,282 @@ function renderSlips(){
       Object.keys(byT).forEach(lb=>{const r=document.createElement('div');r.className='sd-row';r.innerHTML=`<span style="color:var(--mid)">${lb}</span><span style="font-weight:700">฿${fmt(byT[lb])}</span>`;det.appendChild(r);});
       const dr=document.createElement('div');dr.style='display:flex;justify-content:flex-end;margin-top:6px';
       const db=document.createElement('button');db.className='btn-red btn-sm';db.textContent='ลบโพยนี้';
-      db.onclick=ev=>{ev.stopPropagation();if(confirm('ลบโพยนี้?')){saveSlips(loadSlips().filter(x=>x.id!==slip.id));renderSlips();populatePeriods();renderAgents();}};
+      db.onclick=ev=>{ev.stopPropagation();if(confirm('ลบโพยนี้?')){saveSlips(loadSlips().filter(x=>x.id!==slip.id));renderSlips();populatePeriods();renderAgents();renderResults();}};
       dr.appendChild(db);det.appendChild(dr);sc.appendChild(det);
       sc.onclick=()=>det.classList.toggle('open');pg.appendChild(sc);
     });
     el.appendChild(pg);
+  });
+}
+
+// ===== FETCH THAI LOTTERY =====
+async function fetchThaiLotto(periodKey){
+  const btn=document.getElementById('fetch-btn-'+periodKey);
+  if(btn){btn.disabled=true;btn.innerHTML='⏳ กำลังดึงผล...';}
+  try{
+    // Try rayriffy API
+    const res=await fetch('https://lotto.api.rayriffy.com/latest');
+    const json=await res.json();
+    const d=json.response;
+
+    // Extract results
+    const p1=d.prizes?.find(p=>p.id==='prizeFirst')?.number?.[0]||'';
+    const b2=d.prizes?.find(p=>p.id==='prizeLast2')?.number?.[0]||'';
+    const date=d.date?.value||'';
+
+    if(!p1){toast('ยังไม่มีผลออก หรือ API ไม่ตอบสนอง',false);return;}
+
+    // Fill inputs
+    const p1in=document.getElementById('p1-'+periodKey);
+    const b2in=document.getElementById('b2-'+periodKey);
+    if(p1in) p1in.value=p1;
+    if(b2in) b2in.value=b2;
+
+    // Show preview box
+    const prevBox=document.getElementById('fetch-preview-'+periodKey);
+    if(prevBox){
+      prevBox.innerHTML=`
+        <div class="fr-title">ผลที่ดึงมา — ${date}</div>
+        <div class="fr-row"><span>รางวัลที่ 1</span><span class="fr-num">${p1}</span></div>
+        <div class="fr-row"><span>2 ตัวล่าง</span><span class="fr-num">${b2}</span></div>
+      `;
+      prevBox.classList.remove('hidden');
+    }
+    toast(`ดึงผลหวยไทยแล้ว — รางวัลที่ 1: ${p1}`);
+  }catch(err){
+    toast('ดึงผลไม่สำเร็จ (ต้องเปิดผ่าน GitHub Pages)',false);
+    console.error(err);
+  }
+  if(btn){btn.disabled=false;btn.innerHTML='🔄 ดึงผลหวยไทย Realtime';}
+}
+
+// ===== RESULT TAB =====
+const RESULTS_KEY='sap_results';
+function loadResults(){try{return JSON.parse(localStorage.getItem(RESULTS_KEY)||'{}')}catch{return{}}}
+function saveResults(d){localStorage.setItem(RESULTS_KEY,JSON.stringify(d))}
+
+let resultMode='all';
+function resultFilter(m){
+  resultMode=m;
+  ['all','thai','lao','done','todo'].forEach(x=>{
+    const el=document.getElementById('rf-'+x);if(el)el.classList.toggle('on',x===m);
+  });
+  renderResults();
+}
+
+function checkWin(entry,p1,b2){
+  if(!p1||p1.length!==6)return 0;
+  const l3=p1.slice(-3),l2=p1.slice(-2);
+  let w=false;
+  if(entry.typeId==='3top'||entry.typeId==='3back')w=entry.number===l3;
+  else if(entry.typeId==='3tod'){const ps=[];function px(s){if(s.length<=1){ps.push(s);return;}for(let i=0;i<s.length;i++){const r=s.slice(0,i)+s.slice(i+1);px(r).forEach(p=>ps.indexOf(s[i]+p)<0&&ps.push(s[i]+p));}}px(entry.number);w=ps.includes(l3);}
+  else if(entry.typeId==='3bot')w=entry.number===l3;
+  else if(entry.typeId==='2top')w=entry.number===l2;
+  else if(entry.typeId==='2bot')w=b2&&b2.length===2&&entry.number===b2;
+  else if(entry.typeId==='run_top')w=l3.includes(entry.number);
+  else if(entry.typeId==='run_bot')w=b2&&b2.length===2&&b2.includes(entry.number);
+  return w?entry.amount*entry.payout:0;
+}
+
+function renderResults(){
+  const slips=loadSlips();
+  const results=loadResults();
+  const el=document.getElementById('resultList');
+  if(!el)return;
+  el.innerHTML='';
+
+  // Group by period+lotto
+  const byKey={};
+  slips.forEach(sl=>{
+    const k=sl.period+'|'+sl.lotto;
+    if(!byKey[k])byKey[k]={period:sl.period,lotto:sl.lotto,slips:[]};
+    byKey[k].slips.push(sl);
+  });
+
+  let keys=Object.keys(byKey).sort().reverse();
+
+  // Filter
+  if(resultMode==='thai') keys=keys.filter(k=>k.includes('|thai'));
+  else if(resultMode==='lao') keys=keys.filter(k=>k.includes('|lao'));
+  else if(resultMode==='done') keys=keys.filter(k=>results[k]&&results[k].p1&&results[k].p1.length===6);
+  else if(resultMode==='todo') keys=keys.filter(k=>!results[k]||!results[k].p1||results[k].p1.length!==6);
+
+  if(!keys.length){
+    el.innerHTML='<div class="empty"><div class="empty-ico">🏆</div><div class="empty-txt">ยังไม่มีโพย</div></div>';
+    return;
+  }
+
+  keys.forEach(k=>{
+    const grp=byKey[k];
+    const res=results[k]||{p1:'',b2:''};
+    const isChecked=res.p1&&res.p1.length===6;
+    const lottoLabel=grp.lotto==='thai'?'หวยไทย':'หวยลาว';
+    const totalBet=grp.slips.reduce((s,sl)=>s+sl.totalBet,0);
+
+    // Compute winners if checked
+    let winners=[],totalPayout=0,totalWin=0;
+    if(isChecked){
+      grp.slips.forEach(sl=>{
+        let slWin=0;
+        const winEntries=[];
+        sl.entries.forEach(e=>{
+          const w=checkWin(e,res.p1,res.b2||'');
+          if(w>0){slWin+=w;winEntries.push({...e,wonAmt:w});}
+        });
+        totalWin+=slWin;
+        if(slWin>0) winners.push({name:sl.name,agent:sl.agent||'',won:slWin,winEntries});
+      });
+      totalPayout=totalWin;
+    }
+    const netProfit=totalBet-totalPayout;
+
+    const card=document.createElement('div');card.className='result-period-card';
+
+    // Header
+    const head=document.createElement('div');head.className='rpc-head';
+    head.innerHTML=`
+      <div>
+        <div class="rpc-period">งวด ${grp.period}</div>
+        <div style="font-size:11px;color:var(--gold-light);margin-top:2px">${lottoLabel} · ${grp.slips.length} โพย · ฿${fmt(totalBet)}</div>
+      </div>
+      <span class="rpc-badge ${isChecked?'checked':'unchecked'}">${isChecked?'✓ ตรวจแล้ว':'รอตรวจ'}</span>`;
+    head.onclick=()=>body.classList.toggle('hidden');
+    card.appendChild(head);
+
+    // Body
+    const body=document.createElement('div');body.className='rpc-body';
+    if(isChecked)body.classList.add('');else body.classList.add('');
+
+    // Prize input
+    const pinDiv=document.createElement('div');
+    let fetchBtnHtml='';
+    if(grp.lotto==='thai'){
+      fetchBtnHtml=`
+        <button class="fetch-btn" id="fetch-btn-${k}" onclick="fetchThaiLotto('${k}')">
+          🔄 ดึงผลหวยไทย Realtime
+        </button>
+        <div class="fetch-result-box hidden" id="fetch-preview-${k}"></div>`;
+    }
+    pinDiv.innerHTML=`
+      <div class="section-title">กรอกผลรางวัล${grp.lotto==='lao'?' (หวยลาว — กรอกเอง)':''}</div>
+      ${fetchBtnHtml}
+      <div class="prize-inputs" style="margin-top:8px">
+        <div class="col">
+          <label class="lbl">รางวัลที่ 1 (6 หลัก)</label>
+          <input class="prize-in" id="p1-${k}" maxlength="6" placeholder="000000" inputmode="numeric" value="${res.p1||''}" 
+            style="font-size:18px;letter-spacing:6px">
+        </div>
+        <div class="col">
+          <label class="lbl">2 ตัวล่าง</label>
+          <input class="prize-in" id="b2-${k}" maxlength="2" placeholder="00" inputmode="numeric" value="${res.b2||''}"
+            style="font-size:22px;letter-spacing:8px">
+        </div>
+      </div>`;
+    body.appendChild(pinDiv);
+
+    // Check button
+    const ckBtn=document.createElement('button');ckBtn.className='check-all-btn';
+    ckBtn.textContent='🎯 ตรวจโพยทั้งงวด';
+    ckBtn.onclick=()=>{
+      const p1=document.getElementById(`p1-${k}`).value.trim();
+      const b2=document.getElementById(`b2-${k}`).value.trim();
+      if(p1.length!==6){toast('กรอกรางวัลที่ 1 ให้ครบ 6 หลัก',false);return;}
+      const r=loadResults();r[k]={p1,b2};saveResults(r);renderResults();toast('ตรวจผลแล้ว ✓');
+    };
+    body.appendChild(ckBtn);
+
+    // Results (only if checked)
+    if(isChecked){
+      // Summary
+      const sumDiv=document.createElement('div');sumDiv.className='result-summary';
+      sumDiv.innerHTML=`
+        <div class="section-title" style="border:none;padding:0">สรุปผล</div>
+        <div class="rs-row"><span>ยอดแทงรวม</span><span style="font-weight:700">฿${fmt(totalBet)}</span></div>
+        <div class="rs-row"><span>ยอดจ่ายรางวัล</span><span style="font-weight:700;color:var(--red)">฿${fmt(totalPayout)}</span></div>
+        <div class="rs-total">
+          <span style="font-weight:700;font-size:15px">กำไร/ขาดทุน</span>
+          <span style="font-weight:900;font-size:22px;color:${netProfit>=0?'var(--green)':'var(--red)'}">${netProfit>=0?'+':''}฿${fmt(netProfit)}</span>
+        </div>`;
+      body.appendChild(sumDiv);
+
+      // Winners
+      const winDiv=document.createElement('div');
+      winDiv.innerHTML=`<div class="section-title">ลูกค้าที่ถูกรางวัล (${winners.length} คน)</div>`;
+      if(!winners.length){
+        winDiv.innerHTML+=`<div class="no-winner">🎉 ไม่มีลูกค้าถูกรางวัล</div>`;
+      } else {
+        const wList=document.createElement('div');wList.className='winner-list';
+        winners.forEach(w=>{
+          const wc=document.createElement('div');wc.className='winner-card';
+          let rows=w.winEntries.map(e=>`<div class="winner-row"><span style="color:#2a6040">${e.typeLabel} <b>${e.number}</b></span><span style="font-weight:700;color:var(--green)">+฿${fmt(e.wonAmt)}</span></div>`).join('');
+          wc.innerHTML=`
+            <div class="winner-name">🏆 ${w.name}</div>
+            <div class="winner-agent">${w.agent?`นายหน้า: ${w.agent}`:''}</div>
+            ${rows}
+            <div style="border-top:1px dashed #a8d4b8;margin-top:6px;padding-top:6px;display:flex;justify-content:space-between">
+              <span style="font-weight:700">รวมได้รับ</span>
+              <span style="font-weight:900;font-size:16px;color:var(--green)">฿${fmt(w.won)}</span>
+            </div>`;
+          wList.appendChild(wc);
+        });
+        winDiv.appendChild(wList);
+      }
+      body.appendChild(winDiv);
+
+      // Agent winners summary
+      if(winners.some(w=>w.agent)){
+        const agWinDiv=document.createElement('div');
+        agWinDiv.innerHTML=`<div class="section-title">นายหน้าที่มีลูกค้าถูกรางวัล</div>`;
+        const agWin={};
+        winners.forEach(w=>{if(w.agent){if(!agWin[w.agent])agWin[w.agent]={customers:[],total:0};agWin[w.agent].customers.push(w.name);agWin[w.agent].total+=w.won;}});
+        Object.keys(agWin).forEach(ag=>{
+          const d=document.createElement('div');d.className='agent-winner-card';
+          d.innerHTML=`
+            <div class="aw-name">👤 ${ag}</div>
+            <div style="font-size:12px;color:#8a6000">ลูกค้าถูก: ${agWin[ag].customers.join(', ')}</div>
+            <div style="display:flex;justify-content:space-between;margin-top:4px">
+              <span style="font-size:13px;color:var(--mid)">รวมจ่าย</span>
+              <span style="font-weight:900;font-size:16px;color:#8a6000">฿${fmt(agWin[ag].total)}</span>
+            </div>`;
+          agWinDiv.appendChild(d);
+        });
+        body.appendChild(agWinDiv);
+      }
+
+      // Send to Sheet button
+      const sendDiv=document.createElement('div');
+      sendDiv.innerHTML=`<div class="section-title">บันทึกผล</div>`;
+      const sendBtn=document.createElement('button');sendBtn.className='send-result-btn';
+      sendBtn.innerHTML='📊 ส่งผลไป Google Sheet';
+      sendBtn.onclick=async()=>{
+        const url=localStorage.getItem('sheetUrl_'+grp.lotto)||'';
+        if(!url){toast('กรุณาตั้งค่า URL ก่อน',false);return;}
+        sendBtn.disabled=true;sendBtn.textContent='⏳ กำลังส่ง...';
+        const payload={type:'result',period:grp.period,lotto:grp.lotto,p1:res.p1,b2:res.b2,
+          totalBet,totalPayout,netProfit,winners:winners.map(w=>({name:w.name,agent:w.agent,won:w.won}))};
+        try{
+          await fetch(url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+          toast('ส่งผลแล้ว ✓');
+        }catch{toast('บันทึกในเครื่องแล้ว');}
+        sendBtn.disabled=false;sendBtn.innerHTML='📊 ส่งผลไป Google Sheet';
+      };
+      sendDiv.appendChild(sendBtn);
+      body.appendChild(sendDiv);
+    }
+
+    // Delete period result
+    if(isChecked){
+      const clrBtn=document.createElement('button');clrBtn.className='btn-red btn-sm';
+      clrBtn.style.cssText='width:100%;margin-top:4px';clrBtn.textContent='ล้างผลรางวัลงวดนี้';
+      clrBtn.onclick=()=>{
+        if(!confirm('ล้างผลรางวัลงวดนี้?'))return;
+        const r=loadResults();delete r[k];saveResults(r);renderResults();toast('ล้างแล้ว');
+      };
+      body.appendChild(clrBtn);
+    }
+
+    card.appendChild(body);
+    el.appendChild(card);
   });
 }
 
@@ -675,28 +1051,155 @@ function renderAgents(){
   const agents=loadAgents(),slips=loadSlips();
   const el=document.getElementById('agentList');el.innerHTML='';
   let totCom=0,totBet=0;
+
   agents.forEach(ag=>{
-    const my=slips.filter(s=>s.name===ag.name);
-    const myB=my.reduce((s,sl)=>s+sl.totalBet,0),myC=myB*(ag.pct/100);
+    // All slips for this agent
+    const mySlips=slips.filter(s=>s.agent===ag.name||s.name===ag.name);
+    const myB=mySlips.reduce((s,sl)=>s+sl.totalBet,0);
+    const myC=myB*(ag.pct/100);
+    const thaiB=mySlips.filter(s=>s.lotto==='thai').reduce((s,sl)=>s+sl.totalBet,0);
+    const laoB=mySlips.filter(s=>s.lotto==='lao').reduce((s,sl)=>s+sl.totalBet,0);
     totCom+=myC;totBet+=myB;
-    const card=document.createElement('div');card.className='ag-card';
-    card.innerHTML=`
+
+    // Group by period
+    const byPeriod={};
+    mySlips.forEach(sl=>{if(!byPeriod[sl.period])byPeriod[sl.period]=[];byPeriod[sl.period].push(sl);});
+
+    // Group customers
+    const byCustomer={};
+    mySlips.forEach(sl=>{if(!byCustomer[sl.name])byCustomer[sl.name]=[];byCustomer[sl.name].push(sl);});
+
+    const card=document.createElement('div');card.className='ag-card';card.style.flexDirection='column';card.style.gap='10px';
+
+    // Header row
+    const hdr=document.createElement('div');hdr.style.cssText='display:flex;align-items:flex-start;gap:10px';
+    hdr.innerHTML=`
       <div class="ag-av">${ag.name.charAt(0)}</div>
       <div style="flex:1">
         <div class="ag-name">${ag.name}</div>
-        <div class="ag-pct">ค่าคอม ${ag.pct}%</div>
-        <div class="ag-stats">
-          <div class="ag-stat"><div class="ag-sl">ยอดโพย</div><div class="ag-sv">฿${fmt(myB)}</div></div>
-          <div class="ag-stat"><div class="ag-sl">ค่าคอม</div><div class="ag-sv" style="color:var(--goldd)">฿${fmt(myC)}</div></div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
+          <span class="ag-pct">ค่าคอม</span>
+          <input style="width:60px;font-size:13px;font-weight:700;padding:3px 6px;border:1.5px solid var(--border);border-radius:6px;background:var(--cream);text-align:center" 
+            type="number" value="${ag.pct}" min="0" max="100" step="0.5"
+            onchange="updateAgentPct(${ag.id},this.value)">
+          <span class="ag-pct">%</span>
         </div>
-        <div style="margin-top:6px"><button class="btn-red btn-sm" onclick="deleteAgent(${ag.id})">ลบ</button></div>
+        <div class="ag-stats" style="margin-top:6px">
+          <div class="ag-stat"><div class="ag-sl">โพยทั้งหมด</div><div class="ag-sv">${mySlips.length}</div></div>
+          <div class="ag-stat"><div class="ag-sl">ยอดรวม</div><div class="ag-sv">฿${fmt(myB)}</div></div>
+          <div class="ag-stat"><div class="ag-sl">หวยไทย</div><div class="ag-sv">฿${fmt(thaiB)}</div></div>
+          <div class="ag-stat"><div class="ag-sl">หวยลาว</div><div class="ag-sv">฿${fmt(laoB)}</div></div>
+          <div class="ag-stat" style="grid-column:span 2;background:#fff3cd"><div class="ag-sl">ค่าคอม</div><div class="ag-sv" style="color:var(--goldd)">฿${fmt(myC)}</div></div>
+        </div>
+        <div style="margin-top:6px;display:flex;gap:6px">
+          <button class="ag-detail-toggle" onclick="toggleAgDetail(this,'cust-${ag.id}')">▼ ลูกค้า (${Object.keys(byCustomer).length} คน)</button>
+          <button class="ag-detail-toggle" onclick="toggleAgDetail(this,'period-${ag.id}')">▼ รายงวด (${Object.keys(byPeriod).length} งวด)</button>
+          <button class="btn-red btn-sm" onclick="deleteAgent(${ag.id})">ลบ</button>
+        </div>
       </div>`;
+    card.appendChild(hdr);
+
+    // CUSTOMER LIST
+    const custDiv=document.createElement('div');custDiv.className='ag-cust-list';custDiv.id=`cust-${ag.id}`;
+    Object.keys(byCustomer).forEach(cname=>{
+      const cSlips=byCustomer[cname];
+      const cBet=cSlips.reduce((s,sl)=>s+sl.totalBet,0);
+      const cCom=cBet*(ag.pct/100);
+      const d=document.createElement('div');d.className='ag-customer';
+      d.innerHTML=`<div class="ag-cust-name">👤 ${cname}</div>
+        <div class="ag-cust-row"><span style="color:var(--mid)">โพย</span><span style="font-weight:700">${cSlips.length} ใบ</span></div>
+        <div class="ag-cust-row"><span style="color:var(--mid)">ยอดแทง</span><span style="font-weight:700">฿${fmt(cBet)}</span></div>
+        <div class="ag-cust-row"><span style="color:var(--mid)">ค่าคอม</span><span style="font-weight:700;color:var(--goldd)">฿${fmt(cCom)}</span></div>`;
+      custDiv.appendChild(d);
+    });
+    if(!Object.keys(byCustomer).length){custDiv.innerHTML='<div style="font-size:12px;color:var(--mid);text-align:center">ยังไม่มีโพย</div>';}
+    card.appendChild(custDiv);
+
+    // PERIOD LIST
+    const perDiv=document.createElement('div');perDiv.className='ag-cust-list';perDiv.id=`period-${ag.id}`;
+    Object.keys(byPeriod).sort().reverse().forEach(period=>{
+      const pSlips=byPeriod[period];
+      const pBet=pSlips.reduce((s,sl)=>s+sl.totalBet,0);
+      const pCom=pBet*(ag.pct/100);
+      const pThai=pSlips.filter(s=>s.lotto==='thai').reduce((s,sl)=>s+sl.totalBet,0);
+      const pLao=pSlips.filter(s=>s.lotto==='lao').reduce((s,sl)=>s+sl.totalBet,0);
+      const d=document.createElement('div');d.className='ag-period-group';
+      d.innerHTML=`
+        <div class="ag-period-head">
+          <span>งวด ${period}</span>
+          <span>฿${fmt(pBet)}</span>
+        </div>
+        <div class="ag-period-body">
+          <div class="ag-cust-row"><span style="color:var(--mid)">โพย</span><span style="font-weight:700">${pSlips.length} ใบ</span></div>
+          <div class="ag-cust-row"><span style="color:var(--mid)">หวยไทย</span><span style="font-weight:700">฿${fmt(pThai)}</span></div>
+          <div class="ag-cust-row"><span style="color:var(--mid)">หวยลาว</span><span style="font-weight:700">฿${fmt(pLao)}</span></div>
+          <div class="ag-cust-row"><span style="color:var(--mid)">ค่าคอม</span><span style="font-weight:700;color:var(--goldd)">฿${fmt(pCom)}</span></div>
+        </div>`;
+      perDiv.appendChild(d);
+    });
+    if(!Object.keys(byPeriod).length){perDiv.innerHTML='<div style="font-size:12px;color:var(--mid);text-align:center;padding:8px">ยังไม่มีโพย</div>';}
+    card.appendChild(perDiv);
+
     el.appendChild(card);
   });
-  if(!agents.length)el.innerHTML='<div class="empty"><div class="empty-ico">👤</div><div class="empty-txt">ยังไม่มีนายหน้า</div></div>';
+
+  if(!agents.length)el.innerHTML='<div class="empty"><div class="empty-ico">👤</div><div class="empty-txt">ยังไม่มีนายหน้า<br><span style="font-size:12px">เพิ่มจากฟอร์มด้านล่าง<br>หรือเพิ่มตอนคีย์โพย</span></div></div>';
+
   document.getElementById('agN').textContent=agents.length;
   document.getElementById('agB').textContent='฿'+fmt(totBet);
   document.getElementById('agC').textContent='฿'+fmt(totCom);
+}
+
+function toggleAgDetail(btn,id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.classList.toggle('open');
+  btn.textContent=btn.textContent.replace(/[▼▲]/g, el.classList.contains('open')?'▲':'▼');
+}
+
+function updateAgentPct(id,val){
+  const agents=loadAgents();
+  const ag=agents.find(a=>a.id===id);
+  if(ag){ag.pct=parseFloat(val)||0;saveAgents(agents);renderAgents();}
+}
+
+// ===== AGENT DROPDOWN HELPERS =====
+function updAllAgentDropdowns(){
+  ['thai','lao'].forEach(k=>updAgentDropdown(k));
+}
+function updAgentDropdown(key){
+  const sel=document.getElementById(`${key}-ag`);
+  if(!sel)return;
+  const cur=sel.value;
+  const agents=loadAgents();
+  sel.innerHTML='<option value="">— ไม่มีนายหน้า —</option>';
+  agents.forEach(ag=>{
+    const o=document.createElement('option');o.value=ag.name;o.textContent=`${ag.name} (${ag.pct}%)`;
+    if(ag.name===cur)o.selected=true;
+    sel.appendChild(o);
+  });
+}
+function addAgentFromLotto(key){
+  const inp=document.getElementById(`${key}-ag-new`);
+  const name=inp.value.trim();
+  if(!name){toast('กรอกชื่อนายหน้า',false);return;}
+  const agents=loadAgents();
+  if(agents.find(a=>a.name===name)){
+    // just select it
+    const sel=document.getElementById(`${key}-ag`);
+    for(let i=0;i<sel.options.length;i++){if(sel.options[i].value===name){sel.selectedIndex=i;break;}}
+    inp.value='';toast(`เลือก ${name} แล้ว`);return;
+  }
+  agents.push({id:Date.now(),name,pct:0});
+  saveAgents(agents);
+  updAllAgentDropdowns();
+  renderAgents();
+  setTimeout(()=>{
+    const sel=document.getElementById(`${key}-ag`);
+    for(let i=0;i<sel.options.length;i++){if(sel.options[i].value===name){sel.selectedIndex=i;break;}}
+  },50);
+  inp.value='';
+  toast(`เพิ่ม ${name} แล้ว — ตั้งค่าคอมใน tab นายหน้า`);
 }
 
 // INIT
@@ -705,6 +1208,7 @@ if(!localStorage.getItem('sheetUrl_thai')) localStorage.setItem('sheetUrl_thai',
 if(!localStorage.getItem('sheetUrl_lao'))  localStorage.setItem('sheetUrl_lao',  'https://script.google.com/macros/s/AKfycbwY0VEytJmnSsVvdKhtRUOKGEjnCS0R5Vr0llNV1lFae41UPIHle10SV0J4ZWusqhex/exec');
 makeLotto('thai-body','thai');
 makeLotto('lao-body','lao');
+updAllAgentDropdowns();
 renderAgents();
 </script>
 </body>
